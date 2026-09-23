@@ -1,0 +1,200 @@
+:root {
+  --fondo: #f3f4f8;
+  --superficie: #ffffff;
+  --texto: #1b1d29;
+  --tenue: #5b6076;
+  --acento: #d94f4f;
+  --borde: #dcdfe8;
+  --casilla: #e7eaf2;
+}
+
+body.oscuro {
+  --fondo: #10131f;
+  --superficie: #181c2c;
+  --texto: #e8eaf4;
+  --tenue: #9aa1bd;
+  --acento: #ff7a59;
+  --borde: #2a3049;
+  --casilla: #222842;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 2rem 1rem;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  transition: background 0.25s, color 0.25s;
+}
+
+.cabecera {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.titulo {
+  margin: 0;
+  font-size: 2.5rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lema {
+  margin: 0.4rem 0 0;
+  color: var(--tenue);
+  font-style: italic;
+}
+
+.panel {
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.config h2 {
+  margin-top: 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: var(--tenue);
+}
+
+.campo {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--tenue);
+}
+
+.campo input {
+  display: block;
+  width: 100%;
+  margin-top: 0.35rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: var(--texto);
+  background: var(--casilla);
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+}
+
+.boton {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--acento);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.boton:hover {
+  filter: brightness(1.1);
+}
+
+.boton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pista {
+  margin: 0.6rem 0 0;
+  font-size: 0.8rem;
+  color: var(--tenue);
+  text-align: center;
+}
+
+kbd {
+  padding: 0.1rem 0.35rem;
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+  background: var(--casilla);
+  font-size: 0.75rem;
+}
+
+.marcador {
+  display: flex;
+  justify-content: space-around;
+  margin: 1.5rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid var(--borde);
+  border-bottom: 1px solid var(--borde);
+}
+
+.dato {
+  text-align: center;
+}
+
+.dato-valor {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.dato-nombre {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--tenue);
+}
+
+.tablero {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+}
+
+.casilla {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  background: var(--casilla);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s, background 0.15s;
+}
+
+.casilla:hover {
+  transform: scale(1.04);
+}
+
+.casilla.bug {
+  background: var(--acento);
+}
+
+.casilla.escudo {
+  background: #3f8f6b;
+}
+
+.casilla.acertada {
+  animation: golpe 0.25s;
+}
+
+@keyframes golpe {
+  50% { transform: scale(0.85); }
+}
+
+.mensaje {
+  margin: 1.2rem 0 0;
+  text-align: center;
+  min-height: 1.4rem;
+  font-weight: 600;
+}
+
+.pie {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--tenue);
+}

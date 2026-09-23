@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokédex Odyssey</title>
+</head>
+<body>
+  <header class="cabecera">
+    <h1>Pokédex Odyssey</h1>
+    <p class="lema">Datos en vivo desde PokeAPI. El event loop no espera a nadie.</p>
+  </header>
+
+  <section class="controles">
+    <input type="search" id="busqueda" placeholder="Buscar por nombre…" autocomplete="off">
+    <select id="tipo">
+      <option value="todos">Todos los tipos</option>
+    </select>
+    <select id="orden">
+      <option value="numero">Orden: número</option>
+      <option value="nombre">Orden: nombre</option>
+      <option value="ataque">Orden: ataque</option>
+    </select>
+    <button id="recargar" type="button">Recargar</button>
+  </section>
+
+  <section class="resumen" id="resumen"></section>
+
+  <!-- Aquí se inyectan las tarjetas y los estados de carga/error -->
+  <main class="resultados" id="resultados" aria-live="polite"></main>
+
+  <footer class="pie">
+    <p>Misión 2 · Vite + fetch + async/await · Datos de <a href="https://pokeapi.co" target="_blank" rel="noopener">PokeAPI</a></p>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caza-Bugs · El despertar del DOM</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="cabecera">
+    <h1 class="titulo">Caza-Bugs</h1>
+    <p class="lema">Aplasta los bugs antes de que el deploy llegue a producción.</p>
+  </header>
+
+  <main class="panel">
+    <section class="config" id="config">
+      <h2>Configuración</h2>
+
+      <label class="campo">
+        Nombre del cazador
+        <input type="text" id="nombre" placeholder="Anónimo" maxlength="16">
+      </label>
+
+      <label class="campo">
+        Dificultad: <span id="etiqueta-dificultad">Normal</span>
+        <input type="range" id="dificultad" min="1" max="3" step="1" value="2">
+      </label>
+
+      <button class="boton" id="jugar">Empezar partida</button>
+      <p class="pista">Pulsa <kbd>Espacio</kbd> para empezar o reiniciar.</p>
+    </section>
+
+    <section class="marcador">
+      <div class="dato">
+        <span class="dato-valor" id="puntos">0</span>
+        <span class="dato-nombre">Puntos</span>
+      </div>
+      <div class="dato">
+        <span class="dato-valor" id="tiempo">30</span>
+        <span class="dato-nombre">Segundos</span>
+      </div>
+      <div class="dato">
+        <span class="dato-valor" id="record">0</span>
+        <span class="dato-nombre">Récord</span>
+      </div>
+    </section>
+
+    <!-- Las casillas se generan desde JavaScript -->
+    <section class="tablero" id="tablero" aria-label="Tablero de juego"></section>
+
+    <p class="mensaje" id="mensaje">Configura la partida y pulsa Empezar.</p>
+  </main>
+
+  <footer class="pie">
+    <p>Hecho con HTML, CSS y JavaScript puro. Sin frameworks, sin librerías.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
