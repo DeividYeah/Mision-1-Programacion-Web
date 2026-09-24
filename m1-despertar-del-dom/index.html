@@ -3,58 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Caza-Bugs · El despertar del DOM</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <title>Caza-Bugs</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
 </head>
 <body>
-  <header class="cabecera">
-    <h1 class="titulo">Caza-Bugs</h1>
-    <p class="lema">Aplasta los bugs antes de que el deploy llegue a producción.</p>
-  </header>
+  <h1>Caza-Bugs 🐛</h1>
+  <p>Haz clic en el bug antes de que se escape. Tienes 20 segundos.</p>
 
-  <main class="panel">
-    <section class="config" id="config">
-      <h2>Configuración</h2>
+  <input type="text" id="nombre" placeholder="Tu nombre">
+  <button id="boton">Empezar</button>
 
-      <label class="campo">
-        Nombre del cazador
-        <input type="text" id="nombre" placeholder="Anónimo" maxlength="16">
-      </label>
+  <p>Puntos: <span id="puntos">0</span> · Tiempo: <span id="tiempo">20</span></p>
 
-      <label class="campo">
-        Dificultad: <span id="etiqueta-dificultad">Normal</span>
-        <input type="range" id="dificultad" min="1" max="3" step="1" value="2">
-      </label>
+  <!-- Las casillas se crean desde main.js -->
+  <div id="tablero"></div>
 
-      <button class="boton" id="jugar">Empezar partida</button>
-      <p class="pista">Pulsa <kbd>Espacio</kbd> para empezar o reiniciar.</p>
-    </section>
-
-    <section class="marcador">
-      <div class="dato">
-        <span class="dato-valor" id="puntos">0</span>
-        <span class="dato-nombre">Puntos</span>
-      </div>
-      <div class="dato">
-        <span class="dato-valor" id="tiempo">30</span>
-        <span class="dato-nombre">Segundos</span>
-      </div>
-      <div class="dato">
-        <span class="dato-valor" id="record">0</span>
-        <span class="dato-nombre">Récord</span>
-      </div>
-    </section>
-
-    <!-- Las casillas se generan desde JavaScript -->
-    <section class="tablero" id="tablero" aria-label="Tablero de juego"></section>
-
-    <p class="mensaje" id="mensaje">Configura la partida y pulsa Empezar.</p>
-  </main>
-
-  <footer class="pie">
-    <p>Hecho con HTML, CSS y JavaScript puro. Sin frameworks, sin librerías.</p>
-  </footer>
-
-  <script src="js/main.js"></script>
+  <p id="mensaje">Escribe tu nombre y pulsa Empezar.</p>
+  <p class="pista">Pista: hay una tecla secreta que apaga la luz…</p>
 </body>
 </html>

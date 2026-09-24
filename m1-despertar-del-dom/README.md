@@ -2,98 +2,52 @@
 
 **Misión 1 · El despertar del DOM** — U1: Introducción a JavaScript y al cliente web.
 
-> *Sin frameworks. Sin librerías. Tú contra el navegador.*
-
-Mini-juego de reflejos construido con HTML, CSS y JavaScript puro. Aparecen bugs en un
-tablero 4x4 y hay que aplastarlos antes de que el tiempo se acabe, evitando los escudos
-(código bueno) que restan puntos.
-
----
+Mini-juego hecho con HTML, CSS y JavaScript puro (sin frameworks ni librerías).
+En un tablero de 3x3 aparece un bug que cambia de casilla cada poco tiempo. Hay que
+hacerle clic para sumar puntos antes de que se acaben los 20 segundos.
 
 ## Cómo ejecutarlo
 
-No necesita instalación ni servidor:
-
-1. Clona o descarga el repositorio.
-2. Abre `index.html` en el navegador.
+Abre `index.html` en el navegador. No necesita instalación.
 
 ## Cómo se juega
 
-| Acción | Resultado |
-| --- | --- |
-| Clic en 🐛 | +1 punto |
-| Clic en 🛡️ | −2 puntos (era código bueno) |
-| Clic en una casilla vacía | −1 punto |
-
-- Escribe tu nombre y elige la dificultad (**Tranquilo**, **Normal** o **Caótico**):
-  cambia la velocidad de aparición y cuántos escudos hay en pantalla.
-- Pulsa **Empezar partida** o la tecla <kbd>Espacio</kbd>.
-- La partida dura 30 segundos. El récord se guarda en `localStorage`.
+1. Escribe tu nombre (opcional) y pulsa **Empezar**.
+2. Haz clic en la casilla del 🐛: cada acierto suma 1 punto.
+3. A los 20 segundos se acaba la partida y se muestra tu puntuación.
 
 ### ⭐ Bonus: modo oscuro
 
-Pulsa la tecla secreta <kbd>N</kbd> (de *night*) en cualquier momento para alternar el
-tema claro/oscuro. Funciona cambiando una clase en `<body>`; los colores viven en
-variables CSS, así que no hay estilos duplicados.
-
----
+Pulsa la tecla secreta <kbd>N</kbd> para activar o desactivar el modo oscuro.
+Un evento `keydown` sobre `document` hace `document.body.classList.toggle("oscuro")`.
 
 ## Estructura
 
 ```
 m1-despertar-del-dom/
-├── index.html        Estructura y marcado semántico
-├── css/
-│   └── styles.css    Estilos + variables de tema (claro/oscuro)
-├── js/
-│   └── main.js       Toda la lógica del juego
+├── index.html   Estructura de la página
+├── styles.css   Estilos y modo oscuro
+├── main.js      Lógica del juego
 └── README.md
 ```
 
-Los tres lenguajes están en archivos propios: el HTML no contiene ni una línea de CSS
-ni de JavaScript, y no hay ningún handler inline (`onclick="..."`).
+El HTML no tiene CSS ni JavaScript dentro, ni handlers inline (`onclick="..."`).
 
-## Decisiones técnicas
-
-- **El tablero se genera desde JS.** `createElement` + `appendChild` en un bucle crean
-  las 16 casillas; el HTML solo aporta el contenedor vacío.
-- **Delegación de eventos.** Un único `addEventListener` en el tablero en vez de 16
-  listeners. `event.target.closest(".casilla")` identifica la casilla pulsada.
-- **Estado y presentación separados.** Las variables (`puntos`, `tiempo`, `enJuego`)
-  guardan el estado; funciones como `pintarMarcador()` lo vuelcan al DOM. Así el DOM
-  nunca es la fuente de verdad.
-- **`classList` en lugar de estilos inline.** El tipo de casilla se expresa con las
-  clases `.bug` y `.escudo`, y el CSS decide cómo se ven.
-- **`const` por defecto, `let` solo donde el valor cambia.** Ninguna `var`.
-- **Template literals** para los mensajes al jugador.
-- **Dos temporizadores independientes**: uno reparte rondas (su velocidad depende del
-  nivel) y otro descuenta segundos. Ambos se limpian con `clearInterval` al terminar,
-  para que reiniciar no deje relojes colgando.
-
-## Rúbrica cubierta
+## Qué se practica
 
 | Criterio | Dónde se ve |
 | --- | --- |
-| Manipulación del DOM | `crearTablero()`, `repartirRonda()`, `limpiarTablero()` |
-| Eventos | `click` (tablero y botón), `input` (nombre y dificultad), `keydown` (espacio y tecla secreta) |
-| Fundamentos JS | `const`/`let`, funciones con responsabilidad única, `if`/`while`/`forEach`, template literals |
-| Calidad y organización | Archivos separados, secciones comentadas, nombres en español sin abreviaturas |
-| Originalidad | Sistema de penalizaciones, tres niveles, récord persistente, modo oscuro secreto |
+| Manipulación del DOM | `querySelector`, `createElement` + `appendChild` en `crearTablero()`, `textContent` y `classList` en `moverBug()` |
+| Eventos | `click` (botón y casillas), `input` (nombre), `keydown` (tecla secreta) con `addEventListener` |
+| Fundamentos JS | `const` / `let`, funciones, bucles `for`, `if`, template literals, `setInterval` / `clearInterval` |
+| Calidad | Código comentado por pasos y nombres claros en español |
 
 ## Tecnología
 
-HTML5, CSS3 (Grid, variables, animaciones) y JavaScript ES6+. Cero dependencias.
-
----
+HTML5, CSS3 (Grid) y JavaScript ES6+. Cero dependencias.
 
 ## Declaración de uso de IA
 
-He usado **Claude (Anthropic)** como apoyo durante el desarrollo de esta práctica:
-
-- Para generar una primera versión del esqueleto del juego y de los estilos.
-- Para revisar el código y comentar decisiones (delegación de eventos, limpieza de
-  temporizadores, uso de variables CSS para el tema).
-
-He revisado, probado y comprendido todo el código entregado, y soy capaz de explicar
-cualquier parte de él. Las decisiones de diseño del juego (mecánica, penalizaciones,
-niveles) son propias.
+He usado **Claude (Anthropic)** como apoyo para escribir una primera versión del juego
+y para que me explicara el código. He revisado, probado y comprendido todo el código
+entregado.

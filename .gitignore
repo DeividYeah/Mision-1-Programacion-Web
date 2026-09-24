@@ -1,7 +1,12 @@
-node_modules/
-dist/
-.vite/
-*.log
+# Sistema operativo
 .DS_Store
 Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+
+# Dependencias y logs
+node_modules/
+*.log
 .env
