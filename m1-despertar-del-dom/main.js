@@ -22,7 +22,6 @@ function crearTablero() {
   for (let i = 0; i < NUMERO_CASILLAS; i++) {
     const casilla = document.createElement("div");
     casilla.classList.add("casilla");
-    casilla.addEventListener("click", clickEnCasilla);
     tablero.appendChild(casilla);
     casillas.push(casilla);
   }
@@ -47,8 +46,10 @@ function moverBug() {
   casillaBug.textContent = "🐛";
 }
 
-// 5. Qué pasa al hacer clic en una casilla
-function clickEnCasilla(evento) {
+// 5. Qué pasa al hacer clic en el tablero.
+// Delegación de eventos: un solo listener en #tablero en vez de uno por casilla;
+// evento.target nos dice en qué casilla se ha hecho clic.
+function clickEnTablero(evento) {
   const casilla = evento.target;
 
   if (casilla.classList.contains("bug")) {
@@ -103,6 +104,7 @@ function terminar() {
 
 // 10. Eventos
 boton.addEventListener("click", empezar);
+tablero.addEventListener("click", clickEnTablero);
 
 // Mientras escribe el nombre, se saluda al jugador
 inputNombre.addEventListener("input", () => {
