@@ -16,6 +16,7 @@ let tiempo = 20;
 let temporizadorBug = null;
 let temporizadorReloj = null;
 let casillaBug = null; // casilla donde está el bug ahora mismo
+let jugador = "Anónimo"; // se fija al pulsar Empezar
 
 // 3. Crear las 9 casillas del tablero
 function crearTablero() {
@@ -75,7 +76,8 @@ function empezar() {
   textoPuntos.textContent = puntos;
   textoTiempo.textContent = tiempo;
   boton.disabled = true;
-  mensaje.textContent = `¡Suerte, ${nombreJugador()}!`;
+  jugador = nombreJugador();
+  mensaje.textContent = `¡Suerte, ${jugador}!`;
 
   moverBug();
   temporizadorBug = setInterval(moverBug, 800);
@@ -99,7 +101,7 @@ function terminar() {
   boton.disabled = false;
   quitarBug();
 
-  mensaje.textContent = `Fin del juego, ${nombreJugador()}. Has cazado ${puntos} bugs.`;
+  mensaje.textContent = `Fin del juego, ${jugador}. Has cazado ${puntos} bugs.`;
 }
 
 // 10. Eventos
