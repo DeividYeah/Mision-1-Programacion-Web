@@ -15,6 +15,7 @@ let puntos = 0;
 let tiempo = 20;
 let temporizadorBug = null;
 let temporizadorReloj = null;
+let casillaBug = null; // casilla donde está el bug ahora mismo
 
 // 3. Crear las 9 casillas del tablero
 function crearTablero() {
@@ -27,16 +28,23 @@ function crearTablero() {
   }
 }
 
-// 4. Quitar el bug de donde esté y ponerlo en una casilla al azar
-function moverBug() {
-  for (const casilla of casillas) {
-    casilla.classList.remove("bug");
-    casilla.textContent = "";
+// 4. Quitar el bug de su casilla (solo de esa, no hace falta recorrer todas)
+function quitarBug() {
+  if (casillaBug !== null) {
+    casillaBug.classList.remove("bug");
+    casillaBug.textContent = "";
+    casillaBug = null;
   }
+}
+
+// Mover el bug a una casilla al azar, guardando cuál es
+function moverBug() {
+  quitarBug();
 
   const posicion = Math.floor(Math.random() * NUMERO_CASILLAS);
-  casillas[posicion].classList.add("bug");
-  casillas[posicion].textContent = "🐛";
+  casillaBug = casillas[posicion];
+  casillaBug.classList.add("bug");
+  casillaBug.textContent = "🐛";
 }
 
 // 5. Qué pasa al hacer clic en una casilla
@@ -88,11 +96,7 @@ function terminar() {
   clearInterval(temporizadorBug);
   clearInterval(temporizadorReloj);
   boton.disabled = false;
-
-  for (const casilla of casillas) {
-    casilla.classList.remove("bug");
-    casilla.textContent = "";
-  }
+  quitarBug();
 
   mensaje.textContent = `Fin del juego, ${nombreJugador()}. Has cazado ${puntos} bugs.`;
 }
