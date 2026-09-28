@@ -37,8 +37,8 @@ El HTML no tiene CSS ni JavaScript dentro, ni handlers inline (`onclick="..."`).
 
 | Criterio | Dónde se ve |
 | --- | --- |
-| Manipulación del DOM | `querySelector`, `createElement` + `appendChild` en `crearTablero()`, `textContent` y `classList` en `moverBug()` |
-| Eventos | `click` (botón y casillas), `input` (nombre), `keydown` (tecla secreta) con `addEventListener` |
+| Manipulación del DOM | `querySelector`, `createElement` + `appendChild` en `crearTablero()`, `textContent` y `classList` en `moverBug()`, que guarda la casilla del bug (`casillaBug`) para limpiar solo esa |
+| Eventos | `click` en el botón y **delegación de eventos** en `#tablero` (un solo listener, `evento.target`), `input` (nombre), `keydown` (tecla secreta) con `addEventListener` |
 | Fundamentos JS | `const` / `let`, funciones, bucles `for`, `if`, template literals, `setInterval` / `clearInterval` |
 | Calidad | Código comentado por pasos y nombres claros en español |
 
@@ -49,5 +49,7 @@ HTML5, CSS3 (Grid) y JavaScript ES6+. Cero dependencias.
 ## Declaración de uso de IA
 
 He usado **Claude (Anthropic)** como apoyo para escribir una primera versión del juego
-y para que me explicara el código. He revisado, probado y comprendido todo el código
+y para que me explicara el código. Tras la primera corrección, también me ayudó a aplicar
+las mejoras propuestas (guardar la casilla del bug, delegación de eventos y fijar el nombre
+del jugador al empezar), cada una en su propio commit. He revisado, probado y comprendido todo el código
 entregado.
